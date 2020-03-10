@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='C:/Users/MMurphy/vimfiles'
+let g:netrw_dirhist_3='C:/Users/MMurphy/Three Ireland/Transmissions Operations - Documents/Automation/ACX/Recovery'
+let g:netrw_dirhist_2='C:/Users/MMurphy/Three Ireland/Transmissions Operations - Documents/Automation/ACX'
+let g:netrw_dirhist_1='C:/Users/MMurphy/Three Ireland/Transmissions Operations - Documents/Automation'
+let g:netrw_dirhist_0='C:/Users/MMurphy/Three Ireland/Transmissions Operations - Documents'
+let g:netrw_dirhist_9='C:/Users/MMurphy/Three Ireland/Transmissions Operations - Documents/General'
+let g:netrw_dirhist_8='C:/Users/MMurphy/Three Ireland/Transmissions Operations - Documents/Automation/ACX/Recovery'
+let g:netrw_dirhist_7='C:/Users/MMurphy/Three Ireland/Transmissions Operations - Documents/Automation/ACX'
+let g:netrw_dirhist_6='C:/Users/MMurphy/Three Ireland/Transmissions Operations - Documents/Automation'
+let g:netrw_dirhist_5='C:/Users/MMurphy/Three Ireland/Transmissions Operations - Documents'
