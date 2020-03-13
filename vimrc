@@ -56,3 +56,14 @@ filetype indent on  " filetype-specific indent style
 
 set path+=**    " search down into subfolders
 set wildmenu    " display matching files on tab-completion
+
+" TIDYING SWAP, BACKUP AND UNDO FILES
+if has('win32')
+        set directory=%USERPROFILE%\vimfiles\.swp
+        set backupdir=%USERPROFILE%\vimfiles\.bkp
+        set undodir=%USERPROFILE%\vimfiles\.un
+else
+        set directory=~/.vim/.swp/
+        set backupdir=~/.vim/.bkp/
+        set undodir=~/.vim/.un/
+endif
