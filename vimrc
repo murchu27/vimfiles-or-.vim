@@ -45,6 +45,7 @@ syntax enable		" enable syntax processing
 
 set tabstop=4		" number of visual 'spaces' per tab character
 set softtabstop=4	" number of spaces inserted by pressing tab character
+set shiftwidth=4    " number of spaces inserted on new line after e.g. curly braces
 set expandtab		" insert tab characters as spaces
 set number		    " show line numbers
 set showcmd		    " show command in bottom bar
