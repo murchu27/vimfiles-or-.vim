@@ -39,8 +39,8 @@ if has('syntax') && has('eval')
   packadd! matchit
 endif
 
-colorscheme forest-night    " nice colorscheme!
-colorscheme desert 	" second preference colorscheme
+colorscheme desert  " nice colorscheme!
+"colorscheme forest-night    " second preference colorscheme
 syntax enable		" enable syntax processing
 
 set tabstop=4		" number of visual 'spaces' per tab character
