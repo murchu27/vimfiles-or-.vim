@@ -8,11 +8,11 @@ endif
 source $VIMRUNTIME/defaults.vim
 
 if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
+  set nobackup        " do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file (restore to previous version)
+  set backup        " keep a backup file (restore to previous version)
   if has('persistent_undo')
-    set undofile	" keep an undo file (undo changes after closing)
+    set undofile    " keep an undo file (undo changes after closing)
   endif
 endif
 
@@ -41,15 +41,31 @@ endif
 
 colorscheme desert  " nice colorscheme!
 "colorscheme forest-night    " second preference colorscheme
-syntax enable		" enable syntax processing
+syntax enable        " enable syntax processing
 
-set tabstop=4		" number of visual 'spaces' per tab character
-set softtabstop=4	" number of spaces inserted by pressing tab character
+" adding command to quickly open and edit my vimrc in a new tab
+if has('win32')
+    command EditRC tabnew ~\vimfiles\vimrc
+    " command Erc EditRC
+else
+    command EditRC tabnew ~/.vim/vimrc
+    " command Erc EditRC
+endif
+
+" FORMATTING OPTIONS
+set tabstop=4       " number of visual 'spaces' per tab character
+set softtabstop=4   " number of spaces inserted by pressing tab character
 set shiftwidth=4    " number of spaces inserted on new line after e.g. curly braces
-set expandtab		" insert tab characters as spaces
-set number		    " show line numbers
-set showcmd		    " show command in bottom bar
+set expandtab       " insert tab characters as spaces
+
+set number rnu      " show hybrid line numbers (absolute num of current line, relative num of other lines)
+set showcmd         " show command in bottom bar
 set cursorline      " highlight current line
+
+set breakindent     " wrapped/'broken' lines are indented to the same level as the start of the line
+let &showbreak='   '    " sets the indentation of 'broken' lines to two whitespaces ahead of the start of the line
+set linebreak       " doesn't break in the middle of words
+
 filetype plugin on  " filetype-specific plugin use
 filetype indent on  " filetype-specific indent style
 
@@ -60,13 +76,18 @@ set wildmenu    " display matching files on tab-completion
 
 " TIDYING SWAP, BACKUP, UNDO AND VIMINFO FILES
 if has('win32')
-        set directory=%USERPROFILE%\vimfiles\.swp
-        set backupdir=%USERPROFILE%\vimfiles\.bkp
-        set undodir=%USERPROFILE%\vimfiles\.un
-        set viminfo+=n$HOME\\vimfiles\\viminfo
+    set directory=%USERPROFILE%\vimfiles\.swp
+    set backupdir=%USERPROFILE%\vimfiles\.bkp
+    set undodir=%USERPROFILE%\vimfiles\.un
+    set viminfo+=n$HOME\\vimfiles\\viminfo
 else
-        set directory=~/.vim/.swp/
-        set backupdir=~/.vim/.bkp/
-        set undodir=~/.vim/.un/
-        set viminfo+=n~/.vim/viminfo
+    set directory=~/.vim/.swp/
+    set backupdir=~/.vim/.bkp/
+    set undodir=~/.vim/.un/
+    set viminfo+=n~/.vim/viminfo
 endif
+
+" OPTIONS FOR `vim-notes` PLUGIN
+
+let g:notes_directories = ['~/Syncthing/Notes']
+let g:notes_suffix = '.note'
