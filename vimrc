@@ -45,10 +45,10 @@ syntax enable        " enable syntax processing
 
 " adding command to quickly open and edit my vimrc in a new tab
 if has('win32')
-    command EditRC tabnew ~\vimfiles\vimrc
+    command EditRC split ~\vimfiles\vimrc
     " command Erc EditRC
 else
-    command EditRC tabnew ~/.vim/vimrc
+    command EditRC split ~/.vim/vimrc
     " command Erc EditRC
 endif
 
@@ -91,3 +91,11 @@ endif
 
 let g:notes_directories = ['~/Syncthing/Notes']
 let g:notes_suffix = '.note'
+
+" OPTIONS FOR `vimwiki` PLUGIN
+
+let g:vimwiki_list = [{'path': '~/Syncthing/vimwiki/',
+            \ 'syntax': 'markdown', 'ext': '.md'}]
+
+" Adding command to convert to html with pandoc
+command Pan let fn=expand('%:r').'.html' | silent execute '!pandoc % -o '.fn.' && start '.fn
