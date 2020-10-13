@@ -52,6 +52,9 @@ else
     " command Erc EditRC
 endif
 
+" changing leader key to make it easier to reach
+let mapleader=","
+
 " FORMATTING OPTIONS
 set tabstop=4       " number of visual 'spaces' per tab character
 set softtabstop=4   " number of spaces inserted by pressing tab character
@@ -94,8 +97,10 @@ let g:notes_suffix = '.note'
 
 " OPTIONS FOR `vimwiki` PLUGIN
 
-let g:vimwiki_list = [{'path': '~/Syncthing/vimwiki/',
-            \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/Syncthing/Notes/vimwiki/', 
+            \ 'path_html': '~/Syncthing/Notes/vimwiki/html/',
+            \ 'syntax': 'markdown', 'ext': '.md',
+            \ 'custom_wiki2html': '%USERPROFILE%\Syncthing\Notes\vimwiki\misaka_md2html.py' }]
 
 " Adding command to convert to html with pandoc
 command Pan let fn=expand('%:r').'.html' | silent execute '!pandoc % -o '.fn.' && start '.fn
