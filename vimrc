@@ -100,7 +100,12 @@ let g:notes_suffix = '.note'
 let g:vimwiki_list = [{'path': '~/Syncthing/Notes/vimwiki/', 
             \ 'path_html': '~/Syncthing/Notes/vimwiki/html/',
             \ 'syntax': 'markdown', 'ext': '.md',
-            \ 'custom_wiki2html': '%USERPROFILE%\Syncthing\Notes\vimwiki\misaka_md2html.py' }]
+            \ 'custom_wiki2html': '%USERPROFILE%\Syncthing\Notes\vimwiki\misaka_md2html.py',
+            \ 'auto_diary_index': 1 }]
 
 " Adding command to convert to html with pandoc
-command Pan let fn=expand('%:r').'.html' | silent execute '!pandoc % -o '.fn.' && start '.fn
+if has('win32')
+    command Pan let fn=expand('%:p:h').'\html\'.expand('%:t:r').'.html' | silent execute '!pandoc "%" -o "'.fn.'" && "'.fn.'"'
+else
+    command Pan let fn=expand('%:p:h').'/html/'.expand('%:t:r').'.html' | silent execute '!pandoc "%" -o "'.fn.'" && "'.fn.'"'
+endif
