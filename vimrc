@@ -41,6 +41,9 @@ endif
 
 colorscheme desert  " nice colorscheme!
 "colorscheme forest-night    " second preference colorscheme
+set guifont=Consolas:h11:cANSI:qDRAFT
+
+
 syntax enable        " enable syntax processing
 
 " adding command to quickly open and edit my vimrc in a new tab
@@ -72,6 +75,12 @@ set linebreak       " doesn't break in the middle of words
 filetype plugin on  " filetype-specific plugin use
 filetype indent on  " filetype-specific indent style
 
+" coc.nvim installation for autocompletion, etc.
+call plug#begin()
+Plug 'neoclide/coc.nvim'
+Plug 'kevinoid/vim-jsonc'
+call plug#end()
+
 " FINDING FILES
 
 set path+=**    " search down into subfolders
@@ -90,6 +99,26 @@ else
     set viminfo+=n~/.vim/viminfo
 endif
 
+" OPTIONS FOR `coc` PLUGIN
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" use leader-n and leader-p to navigate diagnostics
+nmap <silent> ,n <Plug>(coc-diagnostic-next)
+nmap <silent> ,p <Plug>(coc-diagnostic-prev)
+
+" set highlighting for popup
+highlight Pmenu guibg=SlateBlue ctermbg=LightBlue
+
+
 " OPTIONS FOR `vim-notes` PLUGIN
 
 let g:notes_directories = ['~/Syncthing/Notes']
@@ -105,7 +134,10 @@ let g:vimwiki_list = [{'path': '~/Syncthing/Notes/vimwiki/',
 
 " Adding command to convert to html with pandoc
 if has('win32')
-    command Pan let fn=expand('%:p:h').'\html\'.expand('%:t:r').'.html' | silent execute '!pandoc "%" -o "'.fn.'" && "'.fn.'"'
+    command Pan let fn=expand('%:p:h').'\html\'.expand('%:t:r').'.html' | silent execute '!pandoc --standalone "%" -c pandoc.css -o "'.fn.'" && "'.fn.'"'
+    command PanRefresh let fn=expand('%:p:h').'\html\'.expand('%:t:r').'.html' | silent execute '!pandoc --standalone "%" -c pandoc.css -o "'.fn.'"'
 else
     command Pan let fn=expand('%:p:h').'/html/'.expand('%:t:r').'.html' | silent execute '!pandoc "%" -o "'.fn.'" && "'.fn.'"'
 endif
+
+packloadall

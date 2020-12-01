@@ -24,3 +24,6 @@ viminfo
 
 # recent note file
 misc/notes/recent.txt
+
+# vim-plug plugins (can download with `PlugInstall`)
+plugged/
