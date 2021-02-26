@@ -77,8 +77,10 @@ filetype indent on  " filetype-specific indent style
 
 " coc.nvim installation for autocompletion, etc.
 call plug#begin()
-Plug 'neoclide/coc.nvim'
-Plug 'kevinoid/vim-jsonc'
+    Plug 'neoclide/coc.nvim'
+    Plug 'kevinoid/vim-jsonc'
+    Plug 'StanAngeloff/php.vim'
+    Plug 'preservim/nerdtree'
 call plug#end()
 
 " FINDING FILES
