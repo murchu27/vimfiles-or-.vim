@@ -153,6 +153,8 @@ else
             \ 'auto_diary_index': 1 }]
 endif
 
+let g:vimwiki_folding = 'expr'
+
 " Adding command to convert to html with pandoc
 if has('win32')
     command Pan let fn=expand('%:p:h').'\html\'.expand('%:t:r').'.html' | silent execute '!pandoc --standalone "%" -c pandoc.css -o "'.fn.'" && "'.fn.'"'
