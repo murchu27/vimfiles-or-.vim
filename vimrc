@@ -82,9 +82,11 @@ filetype indent on  " filetype-specific indent style
 
 " coc.nvim installation for autocompletion, etc.
 call plug#begin()
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'kevinoid/vim-jsonc'
 call plug#end()
+
+"let g:coc_disable_startup_warning = 1
 
 " FINDING FILES
 
