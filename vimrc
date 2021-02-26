@@ -41,7 +41,12 @@ endif
 
 colorscheme desert  " nice colorscheme!
 "colorscheme forest-night    " second preference colorscheme
-set guifont=Consolas:h11:cANSI:qDRAFT
+
+if has('win32')
+    set guifont=Consolas:h11:cANSI:qDRAFT
+else
+    set guifont=
+endif
 
 
 syntax enable        " enable syntax processing
@@ -77,11 +82,13 @@ filetype indent on  " filetype-specific indent style
 
 " coc.nvim installation for autocompletion, etc.
 call plug#begin()
-    Plug 'neoclide/coc.nvim'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'kevinoid/vim-jsonc'
     Plug 'StanAngeloff/php.vim'
     Plug 'preservim/nerdtree'
 call plug#end()
+
+let g:coc_disable_startup_warning = 1
 
 " FINDING FILES
 
@@ -123,16 +130,28 @@ highlight Pmenu guibg=SlateBlue ctermbg=LightBlue
 
 " OPTIONS FOR `vim-notes` PLUGIN
 
-let g:notes_directories = ['~/Syncthing/Notes']
-let g:notes_suffix = '.note'
+if has('win32')
+    let g:notes_directories = ['~/Syncthing/Notes']
+    let g:notes_suffix = '.note'
+else
+    let g:notes_directories = ['~/Notes']
+    let g:notes_suffix = '.note'
+endif
 
 " OPTIONS FOR `vimwiki` PLUGIN
 
-let g:vimwiki_list = [{'path': '~/Syncthing/Notes/vimwiki/', 
+if has('win32')
+    let g:vimwiki_list = [{'path': '~/Syncthing/Notes/vimwiki/',
             \ 'path_html': '~/Syncthing/Notes/vimwiki/html/',
             \ 'syntax': 'markdown', 'ext': '.md',
             \ 'custom_wiki2html': '%USERPROFILE%\Syncthing\Notes\vimwiki\misaka_md2html.py',
             \ 'auto_diary_index': 1 }]
+else
+    let g:vimwiki_list = [{'path': '~/Notes/vimwiki/',
+            \ 'path_html': '~/Notes/vimwiki/html/',
+            \ 'syntax': 'markdown', 'ext': '.md',
+            \ 'auto_diary_index': 1 }]
+endif
 
 " Adding command to convert to html with pandoc
 if has('win32')
