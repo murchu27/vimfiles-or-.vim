@@ -126,16 +126,28 @@ highlight Pmenu guibg=SlateBlue ctermbg=LightBlue
 
 " OPTIONS FOR `vim-notes` PLUGIN
 
-let g:notes_directories = ['~/Syncthing/Notes']
-let g:notes_suffix = '.note'
+if has('win32')
+    let g:notes_directories = ['~/Syncthing/Notes']
+    let g:notes_suffix = '.note'
+else
+    let g:notes_directories = ['~/Notes']
+    let g:notes_suffix = '.note'
+endif
 
 " OPTIONS FOR `vimwiki` PLUGIN
 
-let g:vimwiki_list = [{'path': '~/Syncthing/Notes/vimwiki/', 
+if has('win32')
+    let g:vimwiki_list = [{'path': '~/Syncthing/Notes/vimwiki/',
             \ 'path_html': '~/Syncthing/Notes/vimwiki/html/',
             \ 'syntax': 'markdown', 'ext': '.md',
             \ 'custom_wiki2html': '%USERPROFILE%\Syncthing\Notes\vimwiki\misaka_md2html.py',
             \ 'auto_diary_index': 1 }]
+else
+    let g:vimwiki_list = [{'path': '~/Notes/vimwiki/',
+            \ 'path_html': '~/Notes/vimwiki/html/',
+            \ 'syntax': 'markdown', 'ext': '.md',
+            \ 'auto_diary_index': 1 }]
+endif
 
 " Adding command to convert to html with pandoc
 if has('win32')
