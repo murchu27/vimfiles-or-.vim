@@ -86,7 +86,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'kevinoid/vim-jsonc'
 call plug#end()
 
-"let g:coc_disable_startup_warning = 1
+let g:coc_disable_startup_warning = 1
 
 " FINDING FILES
 
