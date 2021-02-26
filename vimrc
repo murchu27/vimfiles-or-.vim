@@ -41,7 +41,12 @@ endif
 
 colorscheme desert  " nice colorscheme!
 "colorscheme forest-night    " second preference colorscheme
-set guifont=Consolas:h11:cANSI:qDRAFT
+
+if has('win32')
+    set guifont=Consolas:h11:cANSI:qDRAFT
+else
+    set guifont=
+endif
 
 
 syntax enable        " enable syntax processing
