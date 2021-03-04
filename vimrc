@@ -182,6 +182,7 @@ if has('win32')
     command PanRefresh let fn=expand('%:p:h').'\html\'.expand('%:t:r').'.html' | silent execute '!pandoc --standalone "%" -c pandoc.css -o "'.fn.'"'
 else
     command Pan let fn=expand('%:p:h').'/html/'.expand('%:t:r').'.html' | silent execute '!pandoc --standalone "%" -c ~/Notes/vimwiki/html/pandoc.css -o "'.fn.'" && xdg-open "'.fn.'" &'
+    command PanRefresh let fn=expand('%:p:h').'/html/'.expand('%:t:r').'.html' | silent execute '!pandoc --standalone "%" -c ~/Notes/vimwiki/html/pandoc.css -o "'.fn.'"'
 endif
 
 packloadall
