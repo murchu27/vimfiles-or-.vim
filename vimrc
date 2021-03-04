@@ -153,7 +153,28 @@ else
             \ 'auto_diary_index': 1 }]
 endif
 
-let g:vimwiki_folding = 'expr'
+" Using a custom folding method, to not fold the last blank line before headers
+let g:vimwiki_folding = 'custom'
+
+function! VimwikiFoldLevelCustom(lnum)
+  let pounds = strlen(matchstr(getline(a:lnum), '^#\+ '))
+  if (pounds)
+    return '>' . pounds  " start a fold level
+  endif
+  if getline(a:lnum) =~? '\v^\s*$'
+    if (strlen(matchstr(getline(a:lnum + 1), '^#\+ ')))
+      return '-1' " don't fold last blank line before header
+    endif
+  endif
+  return '=' " return previous fold level
+endfunction
+
+augroup VimrcAuGroup
+  autocmd!
+  autocmd FileType vimwiki setlocal foldmethod=expr |
+    \ setlocal foldenable | set foldexpr=VimwikiFoldLevelCustom(v:lnum)
+augroup END
+
 
 " Adding command to convert to html with pandoc
 if has('win32')
