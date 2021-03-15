@@ -41,7 +41,6 @@ endif
 
 colorscheme desert  " nice colorscheme!
 "colorscheme forest-night    " second preference colorscheme
-
 if has('win32')
     set guifont=Consolas:h11:cANSI:qDRAFT
 else
