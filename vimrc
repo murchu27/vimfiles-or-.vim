@@ -85,6 +85,7 @@ call plug#begin()
     Plug 'kevinoid/vim-jsonc'
     Plug 'StanAngeloff/php.vim'
     Plug 'preservim/nerdtree'
+    Plug 'rust-lang/rust.vim'
 call plug#end()
 
 let g:coc_disable_startup_warning = 1
@@ -183,5 +184,8 @@ else
     command Pan let fn=expand('%:p:h').'/html/'.expand('%:t:r').'.html' | silent execute '!pandoc --standalone "%" -c ~/Notes/vimwiki/html/pandoc.css -o "'.fn.'" && xdg-open "'.fn.'" &'
     command PanRefresh let fn=expand('%:p:h').'/html/'.expand('%:t:r').'.html' | silent execute '!pandoc --standalone "%" -c ~/Notes/vimwiki/html/pandoc.css -o "'.fn.'"'
 endif
+
+" Rust auto-formatting on save
+let g:rustfmt_autosave = 1
 
 packloadall
