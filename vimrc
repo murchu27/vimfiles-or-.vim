@@ -44,7 +44,7 @@ colorscheme desert  " nice colorscheme!
 if has('win32')
     set guifont=Consolas:h11:cANSI:qDRAFT
 else
-    set guifont=
+    set guifont=Source\ Code\ Variable\ Medium\ 11
 endif
 
 
