@@ -188,4 +188,7 @@ endif
 " Rust auto-formatting on save
 let g:rustfmt_autosave = 1
 
+" send external command output to terminal window, so that colours are enabled
+set guioptions+=!
+
 packloadall
