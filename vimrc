@@ -79,13 +79,25 @@ set linebreak       " doesn't break in the middle of words
 filetype plugin on  " filetype-specific plugin use
 filetype indent on  " filetype-specific indent style
 
-" coc.nvim installation for autocompletion, etc.
+" Plugin installation
 call plug#begin()
+    " coc.nvim installation for autocompletion, etc.
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+    " json completion
     Plug 'kevinoid/vim-jsonc'
+
+    " php completion
     Plug 'StanAngeloff/php.vim'
+
+    " filetree plugin
     Plug 'preservim/nerdtree'
+
+    " rust support
     Plug 'rust-lang/rust.vim'
+
+    " C# support
+    Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
 
 let g:coc_disable_startup_warning = 1
