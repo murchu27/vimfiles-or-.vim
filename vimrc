@@ -4,8 +4,10 @@ if v:progname =~? "evim"
   finish
 endif
 
-" Get the defaults that most users want.
-source $VIMRUNTIME/defaults.vim
+" Get the defaults that most users want. (only applies to vim)
+if !has('nvim')
+    source $VIMRUNTIME/defaults.vim
+endif
 
 if has("vms")
   set nobackup        " do not keep a backup file, use versions instead
@@ -39,8 +41,36 @@ if has('syntax') && has('eval')
   packadd! matchit
 endif
 
-colorscheme desert  " nice colorscheme!
-"colorscheme forest-night    " second preference colorscheme
+" Plugin installation
+call plug#begin()
+    " coc.nvim installation for autocompletion, etc.
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+    " json completion
+    Plug 'kevinoid/vim-jsonc'
+
+    " php completion
+    Plug 'StanAngeloff/php.vim'
+
+    " filetree plugin
+    Plug 'preservim/nerdtree'
+
+    " rust support
+    Plug 'rust-lang/rust.vim'
+
+    " C# support
+    Plug 'OmniSharp/omnisharp-vim'
+
+    " gruvbox theme
+    Plug 'morhetz/gruvbox'
+call plug#end()
+
+colorscheme gruvbox  " even nicer colorscheme!
+"colorscheme desert  " nice colorscheme!
+"colorscheme forest-night    " fallback colorscheme
+
+set background=dark     " vim doesn't do this by default
+
 if has('win32')
     set guifont=Consolas:h11:cANSI:qDRAFT
 else
@@ -79,27 +109,6 @@ set linebreak       " doesn't break in the middle of words
 filetype plugin on  " filetype-specific plugin use
 filetype indent on  " filetype-specific indent style
 
-" Plugin installation
-call plug#begin()
-    " coc.nvim installation for autocompletion, etc.
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-    " json completion
-    Plug 'kevinoid/vim-jsonc'
-
-    " php completion
-    Plug 'StanAngeloff/php.vim'
-
-    " filetree plugin
-    Plug 'preservim/nerdtree'
-
-    " rust support
-    Plug 'rust-lang/rust.vim'
-
-    " C# support
-    Plug 'OmniSharp/omnisharp-vim'
-call plug#end()
-
 let g:coc_disable_startup_warning = 1
 
 " FINDING FILES
@@ -112,12 +121,16 @@ if has('win32')
     set directory=%USERPROFILE%\vimfiles\.swp
     set backupdir=%USERPROFILE%\vimfiles\.bkp
     set undodir=%USERPROFILE%\vimfiles\.un
-    set viminfo+=n$HOME\\vimfiles\\viminfo
+    if !has('nvim')
+        set viminfo+=n$HOME\\vimfiles\\viminfo
+    endif
 else
     set directory=~/.vim/.swp/
     set backupdir=~/.vim/.bkp/
     set undodir=~/.vim/.un/
-    set viminfo+=n~/.vim/viminfo
+    if !has('nvim')
+        set viminfo+=n~/.vim/viminfo
+    endif
 endif
 
 " OPTIONS FOR `coc` PLUGIN
