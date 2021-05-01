@@ -118,9 +118,9 @@ set wildmenu    " display matching files on tab-completion
 
 " TIDYING SWAP, BACKUP, UNDO AND VIMINFO FILES
 if has('win32')
-    set directory=%USERPROFILE%\vimfiles\.swp
-    set backupdir=%USERPROFILE%\vimfiles\.bkp
-    set undodir=%USERPROFILE%\vimfiles\.un
+    set directory=~\vimfiles\.swp
+    set backupdir=~\vimfiles\.bkp
+    set undodir=~\vimfiles\.un
     if !has('nvim')
         set viminfo+=n$HOME\\vimfiles\\viminfo
     endif
