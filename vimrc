@@ -153,16 +153,6 @@ nmap <silent> ,p <Plug>(coc-diagnostic-prev)
 highlight Pmenu guibg=SlateBlue ctermbg=LightBlue
 
 
-" OPTIONS FOR `vim-notes` PLUGIN
-
-if has('win32')
-    let g:notes_directories = ['~/Syncthing/Notes']
-    let g:notes_suffix = '.note'
-else
-    let g:notes_directories = ['~/Notes']
-    let g:notes_suffix = '.note'
-endif
-
 " OPTIONS FOR `vimwiki` PLUGIN
 
 if has('win32')
