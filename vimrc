@@ -46,6 +46,9 @@ call plug#begin()
     " coc.nvim installation for autocompletion, etc.
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+    " vimwki plugin for note taking
+    Plug 'vimwiki/vimwiki'
+
     " json completion
     Plug 'kevinoid/vim-jsonc'
 
