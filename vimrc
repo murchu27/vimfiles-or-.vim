@@ -210,4 +210,6 @@ let g:cargo_makeprg_params = 'run'
 " send external command output to terminal window, so that colours are enabled
 set guioptions+=!
 
+" enable mouse control in terminal vim
+set mouse=a
 packloadall
