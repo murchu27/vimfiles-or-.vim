@@ -196,7 +196,11 @@ augroup END
 
 " Adding command to convert to html with pandoc
 if has('win32')
-    command Pan let fn=expand('%:p:h').'\html\'.expand('%:t:r').'.html' | silent execute '!pandoc --standalone "%" -c pandoc.css -o "'.fn.'" && "'.fn.'"'
+    " For some reason, Neovim hangs when opening browser unless browser is already open
+    " Can't figure out how to get around this, so I'll just have to remember
+    " to manually open the browser each time I run this
+    let browser='C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe'
+    command Pan let fn=expand('%:p:h').'\html\'.expand('%:t:r').'.html' | silent execute '!pandoc --standalone "%" -c pandoc.css -o "'.fn.'" && "'.browser.'" "'.fn.'"'
     command PanRefresh let fn=expand('%:p:h').'\html\'.expand('%:t:r').'.html' | silent execute '!pandoc --standalone "%" -c pandoc.css -o "'.fn.'"'
 else
     command Pan let fn=expand('%:p:h').'/html/'.expand('%:t:r').'.html' | silent execute '!pandoc --standalone "%" -c ~/Notes/vimwiki/html/pandoc.css -o "'.fn.'" && xdg-open "'.fn.'" &'
@@ -210,4 +214,6 @@ let g:cargo_makeprg_params = 'run'
 " send external command output to terminal window, so that colours are enabled
 set guioptions+=!
 
+" enable mouse control in terminal vim
+set mouse=a
 packloadall
