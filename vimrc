@@ -66,6 +66,33 @@ call plug#begin()
 
     " gruvbox theme
     Plug 'morhetz/gruvbox'
+
+    " Collection of common configurations for the Nvim LSP client
+    Plug 'neovim/nvim-lspconfig'
+
+    " Extensions to built-in LSP, for example, providing type inlay hints
+    "Plug 'nvim-lua/lsp_extensions.nvim'
+    " Autocompletion framework for built-in LSP
+    "Plug 'nvim-lua/completion-nvim'
+
+    " Completion framework
+    Plug 'hrsh7th/nvim-cmp'
+
+    " LSP completion source for nvim-cmp
+    Plug 'hrsh7th/cmp-nvim-lsp'
+
+    " Snippet completion source for nvim-cmp
+    Plug 'hrsh7th/cmp-vsnip'
+
+    " Other useful completion sources
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-buffer'
+
+    " To enable more of the features of rust-analyzer, such as inlay hints and more!
+    Plug 'simrat39/rust-tools.nvim'
+
+    " Snippet engine
+    Plug 'hrsh7th/vim-vsnip'
 call plug#end()
 
 colorscheme gruvbox  " even nicer colorscheme!
