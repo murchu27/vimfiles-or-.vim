@@ -152,6 +152,12 @@ endfunction
 nmap <silent> ,n <Plug>(coc-diagnostic-next)
 nmap <silent> ,p <Plug>(coc-diagnostic-prev)
 
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 " set highlighting for popup
 highlight Pmenu guibg=SlateBlue ctermbg=LightBlue
 
