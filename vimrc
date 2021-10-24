@@ -186,7 +186,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " set highlighting for popup
-highlight Pmenu guibg=SlateBlue ctermbg=LightBlue
+highlight Pmenu guibg=SlateBlue ctermbg=DarkBlue
 
 
 " OPTIONS FOR `vimwiki` PLUGIN
