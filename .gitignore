@@ -27,3 +27,6 @@ misc/notes/recent.txt
 
 # vim-plug plugins (can download with `PlugInstall`)
 plugged/
+
+# vim-plug itself (can update with `PlugUpgrade`)
+autoload/plug.*
